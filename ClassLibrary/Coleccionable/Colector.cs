@@ -27,7 +27,7 @@ public class Colector : IColector
     public Colector(string id)
     {
         string path = Directory.GetCurrentDirectory();
-        path = Path.Join(path, "..", "Effects");
+        path = Path.Join(path, "Effects");
         pathID = Path.Join(path, id + ".txt");
         //Si no existe el archivo lo crea
         if (!File.Exists(pathID))
