@@ -47,6 +47,10 @@ public class Human_Player : Player
         {
             return new Efecto();
         }
+        if(decision.TrimEnd() == "Igualar")
+        {
+            return new Igualar();
+        }
         return new InvalidDecision();
     }
 }

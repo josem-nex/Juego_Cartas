@@ -5,13 +5,7 @@ namespace Poker;
 /// </summary>
 public class Colector : IColector
 {
-    public List<string> get_efectos
-    {
-        get
-        {
-            return Process(File.ReadAllText(pathID));
-        }
-    }
+    public List<string> get_efectos => Process(File.ReadAllText(pathID));
     private List<string> Process(string file)
     {
         file = file.TrimEnd('\n');
