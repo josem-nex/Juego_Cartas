@@ -19,9 +19,9 @@ public class Program
         List<Mini_Ronda_Contexto> mini_rondas_contexto = new List<Mini_Ronda_Contexto>()
         {
             new Mini_Ronda_Contexto(2),
-            new Mini_Ronda_Contexto(3, new RepartidorComun()),
-            new Mini_Ronda_Contexto(1, new RepartidorComun()),
-            new Mini_Ronda_Contexto(1, new RepartidorComun()),
+            new Mini_Ronda_Contexto(3, new Repartidor()),
+            new Mini_Ronda_Contexto(1, new Repartidor()),
+            new Mini_Ronda_Contexto(1, new Repartidor()),
         };
 
 
@@ -52,7 +52,10 @@ public class Program
 
         // Define settings for the game.
         Global_Contexto context = new Global_Contexto(ronda, factory, A, B, C);
-        Manager manager = new Manager(scorer, context);
+        IFrontMiniRonda front = new FrontMiniRonda();
+        IFrontRonda frontRonda = new FrontRonda();
+        IFrontendGame frontGame = new FrontGame(front, frontRonda);
+        Manager manager = new Manager(scorer, context, frontGame);
         manager.SimulateGame();
     }
 }
