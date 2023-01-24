@@ -27,7 +27,7 @@ public class Manager
     }
     public void SimulateGame()
     {
-        Tools.ShowColoredMessage("Comienza la partida: \n", ConsoleColor.DarkGray);
+        FrontGame.StarGame();
         while (Global_Contexto.PlayerManager.Get_Active_Players(1).Count() > 1)
         {
             Global_Contexto.Config();
@@ -42,7 +42,7 @@ public class Manager
                 winner.Colector.add_efecto(player.Colector.remove_efecto());
             }
         }
-        Tools.ShowColoredMessage($"Winner is:   {winner.Id} \n", ConsoleColor.DarkGray);
+        FrontGame.EndGame(winner);
         Global_Contexto.PlayerManager.Filtro_Partida = new List<PlayerManager.Filtrar>();
     }
 }

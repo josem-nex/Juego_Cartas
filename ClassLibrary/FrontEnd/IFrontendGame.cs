@@ -9,4 +9,6 @@ public interface IFrontendGame
 {
     IFrontMiniRonda FrontMiniRonda { get; }
     IFrontRonda FrontRonda { get; }
+    void EndGame(Player winner);
+    void StarGame();
 }

@@ -8,9 +8,9 @@ public class Program
         scorer.Add_Rank(new TwoTwos("dos dos")); // add custom rank.
 
         // Define PLayers
-        Player A = new Human_Player("Barbaro", 120);
-        Player B = new Human_Player("Miguel", 100);
-        Player C = new Human_Player("PC", 500);
+        Player A = new Human_Player("Cristian", 300);
+        Player B = new Human_Player("Miguel", 300);
+        Player C = new Human_Player("Alvaro", 300);
 
 
         // Define settings for the Mini_Rounds. Generate Random Cards by Default.

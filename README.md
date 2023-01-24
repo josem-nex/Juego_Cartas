@@ -33,9 +33,15 @@ Ambas dependencias deben ser automáticamente añadidas por dotnet la primera ve
 Está implementado en C# 11 (NET 7.0) para hacer uso de la nueva *feature* de que las interfaces pueden definir métodos estáticos abstractos, Para ejecutarlo realizar:
 
 ```bash
-cd Game
-dotnet run
+dotnet run --project Game/
 ```
+
+O si se encuentra en Linux y tiene make instalado realizar desde la raíz del proyecto:
+
+```bash
+make run
+```
+
 
 # Based on:
 
