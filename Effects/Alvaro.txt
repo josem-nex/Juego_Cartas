@@ -32,3 +32,19 @@ $if ¿($holdhand { Cantidad %2 && Priority >3 } {Jugador yo}) || ($holdcard {Val
 	) 
 ) 
 )
+$if ¿($holdhand { Cantidad %2 && Priority >3 } {Jugador yo}) || ($holdcard {Valor mayor} {Dinero mayor)? =>
+	    (
+			$añadircarta
+			{
+			(
+			$robarcarta 
+			{
+				Valor mayor && Suit diamante
+			}
+			{
+				Dinero <100
+			}
+			)
+			}
+		)
+)
