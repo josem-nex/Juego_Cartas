@@ -16,7 +16,7 @@ En tu turno debes escribir que Decisión decides realizar, las posibles decision
 
 - Apostar : escribe la cantidad de dinero que deseas apostar
 
--Igualar : iguala de ser posible a la apuesta del jugador anterior
+- Igualar : iguala de ser posible a la apuesta del jugador anterior
 
 - Pasar : no apostar en la mini-ronda.
 

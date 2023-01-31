@@ -64,5 +64,3 @@ La clase Manager se encarga de recibir toda la configuración que el usuario des
 ### Mejoras, Ideas, Bugs:
 
 - el contexto está muy complicado lo que genera inconsistencia, además de que tiene problemas con las palabras *public, internal, private, sealed, protected, override, virtual, new*. 
-
-- posee la parte visual que debe ser abstraida y separada del backend.(arreglado ???)

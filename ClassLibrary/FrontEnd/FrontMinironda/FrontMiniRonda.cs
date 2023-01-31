@@ -2,7 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-
+/// <summary>
+/// This class represent the FrontEnd of the MiniRonda. It is implemented in the console.
+/// </summary>
 namespace Poker;
 public class FrontMiniRonda : IFrontMiniRonda
 {

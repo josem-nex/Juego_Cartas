@@ -1,5 +1,7 @@
 namespace Poker;
-
+/// <summary>
+/// This class represent the FrontEnd of the Ronda. It is implemented in the console.
+/// </summary>
 public class FrontRonda : IFrontRonda
 {
     public FrontRonda()

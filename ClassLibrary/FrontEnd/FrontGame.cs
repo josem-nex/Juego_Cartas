@@ -1,5 +1,7 @@
 namespace Poker;
-
+/// <summary>
+/// This class represent the FrontEnd of the Game. It is implemented in the console.
+/// </summary>
 public class FrontGame : IFrontendGame{
     public FrontGame(IFrontMiniRonda frontMiniRonda, IFrontRonda frontRonda)
     {

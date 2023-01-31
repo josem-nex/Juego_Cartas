@@ -42,7 +42,7 @@ public class Manager
                 winner.Colector.add_efecto(player.Colector.remove_efecto());
             }
         }
-        FrontGame.EndGame(winner);
         Global_Contexto.PlayerManager.Filtro_Partida = new List<PlayerManager.Filtrar>();
+        FrontGame.EndGame(winner);
     }
 }
