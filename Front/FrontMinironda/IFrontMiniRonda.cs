@@ -1,5 +1,5 @@
-namespace Poker;
-
+namespace Front;
+using Poker;
 public interface IFrontMiniRonda
 {
     void EmpezarMiniRonda(IEnumerable<Player> players);

@@ -2,6 +2,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Poker\Poker.csproj" />
+    <ProjectReference Include="..\Front\Front.csproj" />
+
   </ItemGroup>
 
   <PropertyGroup>

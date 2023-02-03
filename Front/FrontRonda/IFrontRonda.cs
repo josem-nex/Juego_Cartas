@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Poker;
+namespace Front;
+using Poker;
 public interface IFrontRonda
 {
     void EmpezarRonda(IEnumerable<Player> Participants);

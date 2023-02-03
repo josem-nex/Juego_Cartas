@@ -1,5 +1,5 @@
 using Poker;
-
+using Front;
 public class Game
 {
     private Manager Manager;
@@ -20,7 +20,7 @@ public class Game
         FrontGame.EndGame(winner);
         Manager.EndGame(winner);
     }
-    public void ExecuteRonda()
+    private void ExecuteRonda()
     {
         FrontGame.FrontRonda.EmpezarRonda(Manager.GetActivePlayersRonda());
         Manager.StartRonda();
@@ -32,7 +32,7 @@ public class Game
         FrontGame.FrontRonda.TerminarRonda(Participants);
         Manager.EndRonda();
     }
-    public void ExecuteMiniRondas()
+    private void ExecuteMiniRondas()
     {
         List<Mini_Ronda_Contexto> mini_Ronda_Contextos = Manager.Global_Contexto.Ronda_Contexto.Contextos;
         IEnumerable<Player> result = Enumerable.Empty<Player>();

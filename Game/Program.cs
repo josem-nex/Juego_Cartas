@@ -1,4 +1,5 @@
 ﻿using Poker;
+using Front;
 public class Program
 {
     public static void Main()
@@ -55,12 +56,13 @@ public class Program
         IFrontMiniRonda front = new FrontMiniRonda();
         IFrontRonda frontRonda = new FrontRonda();
         IFrontendGame frontGame = new FrontGame(front, frontRonda);
-        Manager manager = new Manager(scorer, context, frontGame);
+        Manager manager = new Manager(scorer, context);
         
         Game Game = new Game(manager, frontGame);
-        Simulador simulador = new Simulador(manager);
-        simulador.Simular();
+        Game.ExecuteGame();
 
+        // Simulador simulador = new Simulador(manager);
+        // simulador.Simular();
     }
     
 }

@@ -5,7 +5,8 @@ using System.Threading.Tasks;
 /// <summary>
 /// This class represent the FrontEnd of the MiniRonda. It is implemented in the console.
 /// </summary>
-namespace Poker;
+namespace Front;
+using Poker;
 public class FrontMiniRonda : IFrontMiniRonda
 {
     public FrontMiniRonda()

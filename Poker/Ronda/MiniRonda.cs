@@ -4,13 +4,12 @@ namespace Poker;
 /// </summary>
 internal class MiniRonda
 {
-    public MiniRonda(IGlobal_Contexto contexto, Mini_Ronda_Contexto mini_contexto, IFrontMiniRonda frontGame)
+    public MiniRonda(IGlobal_Contexto contexto, Mini_Ronda_Contexto mini_contexto)
     {
         Global_Contexto = contexto;
         Mini_Contexto = mini_contexto;
-        FrontGame = frontGame;
+
     }
-    public IFrontMiniRonda FrontGame { get; }
     public IGlobal_Contexto Global_Contexto { get; }
     public IEnumerable<Player> Participants => Global_Contexto.PlayerManager.Get_Active_Players(3);
     public Mini_Ronda_Contexto Mini_Contexto { get; }

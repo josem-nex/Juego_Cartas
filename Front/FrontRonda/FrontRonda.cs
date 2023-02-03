@@ -1,4 +1,5 @@
-namespace Poker;
+namespace Front;
+using Poker;
 /// <summary>
 /// This class represent the FrontEnd of the Ronda. It is implemented in the console.
 /// </summary>

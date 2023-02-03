@@ -9,21 +9,19 @@ public class Manager
     /// so passing [5,1,1] will make a round composed by three mini_round of bets, receiving
     /// 5,1,1 respectively cards in each round</param>
     /// <param name="players"> Well literally the players of the game</param>
-    public Manager(Scorer scorer, IGlobal_Contexto global_Contexto, IFrontendGame frontGame)
+    public Manager(Scorer scorer, IGlobal_Contexto global_Contexto)
     {
         Scorer = scorer;
         Global_Contexto = global_Contexto;
-        FrontGame = frontGame;
     }
     private Scorer Scorer { get; }
-    public IFrontendGame FrontGame { get; }
     public IGlobal_Contexto Global_Contexto { get; }
     internal Ronda ronda { get; private set; }
     internal MiniRonda Mini_Ronda { get; private set; }
     public void StartRonda()
     {
         Global_Contexto.Config();
-        ronda = new Ronda(Scorer, Global_Contexto, FrontGame);
+        ronda = new Ronda(Scorer, Global_Contexto);
     }
     public void ExecuteRonda() => ronda.StartRonda();
     public void EndRonda()

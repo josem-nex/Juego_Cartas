@@ -1,6 +1,6 @@
 namespace Poker;
 
-internal class Tools
+public class Tools
 {
     /// <summary>
     /// Console Colored Print, using Console.Write()

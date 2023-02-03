@@ -4,13 +4,11 @@ namespace Poker;
 /// </summary>
 internal class Ronda
 {
-    internal Ronda(Scorer scorer, IGlobal_Contexto contexto, IFrontendGame frontGame)
+    internal Ronda(Scorer scorer, IGlobal_Contexto contexto)
     {
         Global_Contexto = contexto;
         Scorer = scorer;
-        FrontGame = frontGame;
     }
-    public IFrontendGame FrontGame { get; }
     public Scorer Scorer { get; }
     public IEnumerable<Player> Participants => Global_Contexto.PlayerManager.Get_Active_Players(2);
     public IGlobal_Contexto Global_Contexto { get; }
@@ -25,7 +23,7 @@ internal class Ronda
     internal MiniRonda CreateMiniRonda(Mini_Ronda_Contexto contexto_config)
     {
         Global_Contexto.PlayerManager.Filtro_Mini_Ronda = new List<PlayerManager.Filtrar>();
-        var Mini_ronda = new MiniRonda(this.Global_Contexto, contexto_config, FrontGame.FrontMiniRonda);
+        var Mini_ronda = new MiniRonda(this.Global_Contexto, contexto_config);
         Global_Contexto.PlayerManager.Filtro_Mini_Ronda = new List<PlayerManager.Filtrar>();
 
         return Mini_ronda;
