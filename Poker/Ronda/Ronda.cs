@@ -14,16 +14,16 @@ internal class Ronda
     public Scorer Scorer { get; }
     public IEnumerable<Player> Participants => Global_Contexto.PlayerManager.Get_Active_Players(2);
     public IGlobal_Contexto Global_Contexto { get; }
-    internal List<Player> Simulate()
+    internal List<Player> Winners { get; private set; }
+    internal void Simulate()
     {        
         StartRonda();
         IEnumerable<Player> finalist_round = ExecuteMiniRondas(Global_Contexto.Ronda_Contexto.Contextos);
-        List<Player> winners = GetWinners(finalist_round);
-        Execute_Winners(winners);
-        EndRonda();        
-        return Participants.Where(x => x.Dinero > 0).ToList();
+        Winners = GetWinners(finalist_round);
+        Execute_Winners(Winners);
     }
-    void StartRonda()
+    internal List<Player> ParticipantsEndRonda() => Participants.Where(x => x.Dinero > 0).ToList();
+    internal void StartRonda()
     {
         Global_Contexto.PlayerManager.Filtro_Ronda = new List<PlayerManager.Filtrar>();
         foreach (var player in Participants)
@@ -51,7 +51,6 @@ internal class Ronda
         var worse_hand = player_by_hand.Last();
         if (best_hand is null)
         {
-            FrontGame.FrontRonda.RondaSinGanar();
             return new List<Player>();
         }
         var winners = round_finalist.Where(x => x.Hand.Igual(best_hand)).ToList();
@@ -60,14 +59,12 @@ internal class Ronda
 
     void Execute_Winners(List<Player> winners)
     {
-        FrontGame.FrontRonda.MostrarGanadores(winners);
         foreach (var winner in winners)
             winner.Dinero = winner.Dinero + Global_Contexto.Ronda_Contexto.Apuestas.Get_Dinero_Total_Apostado() / winners.Count;
     }
-    void EndRonda()
+    internal void EndRonda()
     {
-        Global_Contexto.PlayerManager.Filtro_Ronda = new List<PlayerManager.Filtrar>();        
-        FrontGame.FrontRonda.TerminarRonda(Participants);
+        Global_Contexto.PlayerManager.Filtro_Ronda = new List<PlayerManager.Filtrar>();  
         foreach (var player in Participants)
         {
             player.Hand = new Hand(this.Scorer);

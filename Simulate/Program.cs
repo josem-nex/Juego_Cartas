@@ -30,6 +30,5 @@ public class Program
         IFrontRonda frontRonda = new FrontRonda();
         IFrontendGame frontGame = new FrontGame(front, frontRonda);
         Manager manager = new Manager(scorer, context, frontGame);
-        manager.SimulateGame();
     }
 }

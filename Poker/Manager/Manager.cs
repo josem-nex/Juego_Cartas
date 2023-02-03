@@ -18,15 +18,20 @@ public class Manager
     private Scorer Scorer { get; }
     public IFrontendGame FrontGame { get;}
     public IGlobal_Contexto Global_Contexto { get; }
+    internal Ronda ronda { get; private set; }
     public void StartRonda(){
         Global_Contexto.Config();
-        Ronda ronda = new Ronda(Scorer, Global_Contexto, FrontGame);
-        Global_Contexto.PlayerManager.Set_Active_Players(ronda.Simulate());
+        ronda = new Ronda(Scorer, Global_Contexto, FrontGame);
+        ronda.Simulate();
     }
+    public void EndRonda(){
+        ronda.EndRonda();
+        Global_Contexto.PlayerManager.Set_Active_Players(ronda.ParticipantsEndRonda());
+    }
+    public IEnumerable<Player> GetWinnersRonda() => ronda.Winners;
     public Player GetWinner() =>  Global_Contexto.PlayerManager.Get_Player_By_Pos(0);
     public IEnumerable<Player> GetActivePlayers() => Global_Contexto.PlayerManager.Get_Active_Players(1);
     public IEnumerable<Player> GetActivePlayersRonda() => Global_Contexto.PlayerManager.Get_Active_Players(2);
-    
     public void EndGame(Player winner){
         foreach (var player in Global_Contexto.PlayerManager.Players.Where(x => x.Id != winner.Id))
         {

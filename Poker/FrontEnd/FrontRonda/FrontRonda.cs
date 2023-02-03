@@ -15,10 +15,6 @@ public class FrontRonda : IFrontRonda
         }
         Console.WriteLine();
     }
-    public void RondaSinGanar(){
-        Console.WriteLine("Nadie ganó la ronda");
-        Console.WriteLine();
-    }
     public void MostrarGanadores(IEnumerable<Player> winners){
         if (winners.Count() == 0)
         {
