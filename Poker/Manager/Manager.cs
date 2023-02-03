@@ -22,8 +22,8 @@ public class Manager
     public void StartRonda(){
         Global_Contexto.Config();
         ronda = new Ronda(Scorer, Global_Contexto, FrontGame);
-        ronda.Simulate();
     }
+    public void ExecuteRonda() => ronda.Simulate();
     public void EndRonda(){
         ronda.EndRonda();
         Global_Contexto.PlayerManager.Set_Active_Players(ronda.ParticipantsEndRonda());

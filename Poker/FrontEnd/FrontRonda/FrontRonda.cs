@@ -31,5 +31,6 @@ public class FrontRonda : IFrontRonda
     public void TerminarRonda(IEnumerable<Player> Participants){
         foreach (var participant in Participants)
             Console.WriteLine($"{participant.Id}".PadLeft(Participants.Select(x => x.Id.Length).Max()) + " " + participant.Hand + $" {participant.Hand.rank}");
+        System.Console.WriteLine();
     }
 }

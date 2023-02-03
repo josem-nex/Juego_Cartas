@@ -62,6 +62,7 @@ public class Program
         {
             frontGame.FrontRonda.EmpezarRonda(manager.GetActivePlayersRonda());
             manager.StartRonda();
+            manager.ExecuteRonda();
             var winners = manager.GetWinnersRonda();
             frontGame.FrontRonda.MostrarGanadores(winners);
             var Participants = manager.GetActivePlayersRonda();   
