@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <ItemGroup>
-    <ProjectReference Include="..\ClassLibrary\Poker.csproj" />
+    <ProjectReference Include="..\Poker\Poker.csproj" />
   </ItemGroup>
 
   <PropertyGroup>
