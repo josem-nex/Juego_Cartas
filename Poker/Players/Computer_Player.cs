@@ -27,7 +27,7 @@ public class Basic_Computer_Player : Player
         }
         return 1;
     }
-    public override IDecision parse_decision(IGlobal_Contexto contexto)
+    public override IDecision parse_decision(IGlobal_Contexto contexto, string decision = null)
     {
         if (current is null)
         {

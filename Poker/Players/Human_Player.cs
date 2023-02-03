@@ -23,9 +23,8 @@ public class Human_Player : Player
         }
         return value;
     }
-    public override IDecision parse_decision(IGlobal_Contexto contexto)
+    public override IDecision parse_decision(IGlobal_Contexto contexto, string decision)
     {
-        var decision = Console.ReadLine();
         if (string.IsNullOrEmpty(decision))
         {
             return new InvalidDecision();

@@ -21,29 +21,32 @@ public class FrontMiniRonda : IFrontMiniRonda
     public void EntrePlayer(){
         Console.WriteLine("-----------------------------------------------------------------");
     }
-    public void EmpezarJugada(Player player)
+    public void EmpezarMiniRonda(IEnumerable<Player> players)
     {
-        Console.Write("Esta es la mano de ");
-        Tools.ShowColoredMessage($"{player.Id}".PadLeft(6), ConsoleColor.DarkMagenta);
-        Console.Write("  " + player.Hand);
-        Console.Write($"con ${player.Dinero} \n");
+        foreach (var player in players)
+        {
+            Console.Write("Esta es la mano de ");
+            Tools.ShowColoredMessage($"{player.Id}".PadLeft(6), ConsoleColor.DarkMagenta);
+            Console.Write("  " + player.Hand);
+            Console.Write($"con ${player.Dinero} \n");
+        }
     }
-    public void Decide(bool flag)
+    public void Decide(bool flag, Player player)
     {
-        Console.Write(flag ? "Decide Bien > " : "Decide > ");
+        Console.Write(flag ? player.Id + " decide bien > " : player.Id + " decide > ");
     }
     public void DecisionInvalida()
     {
         Tools.ShowColoredMessage("Decisión Inválida \n", ConsoleColor.DarkRed);
     }
-    public void DecisionInvalida(IDecision decision)
+    public void DecisionInvalida(string Help)
     {
         Tools.ShowColoredMessage("Ejecuta bien tu decisión! \n", ConsoleColor.DarkRed);
-        Tools.ShowColoredMessage(decision.Help, ConsoleColor.DarkGray);
+        Tools.ShowColoredMessage(Help, ConsoleColor.DarkGray);
         Console.WriteLine();
     }
-    public void TomarDecision(IDecision decision)
+    public void TomarDecision(string decision)
     {
-        Tools.ShowColoredMessage($"Tomaste la decision de {decision.Id}\n", ConsoleColor.Green);
+        Tools.ShowColoredMessage($"Tomaste la decision de " + decision + "\n", ConsoleColor.Green);
     }
 }

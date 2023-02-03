@@ -40,7 +40,7 @@ public abstract partial class Player : Ideable, IApostador, IDescribable<Player>
     /*
     THis defines the logic of what decision take.
     */
-    public abstract IDecision parse_decision(IGlobal_Contexto contexto);
+    public abstract IDecision parse_decision(IGlobal_Contexto contexto, string decision);
     /*
     This defines the logic of how much money the player should bet.
     */

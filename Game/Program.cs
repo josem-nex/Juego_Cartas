@@ -57,21 +57,8 @@ public class Program
         IFrontendGame frontGame = new FrontGame(front, frontRonda);
         Manager manager = new Manager(scorer, context, frontGame);
         
-        frontGame.StarGame();
-        while (manager.GetActivePlayers().Count() > 1)
-        {
-            frontGame.FrontRonda.EmpezarRonda(manager.GetActivePlayersRonda());
-            manager.StartRonda();
-            manager.ExecuteRonda();
-            var winners = manager.GetWinnersRonda();
-            frontGame.FrontRonda.MostrarGanadores(winners);
-            var Participants = manager.GetActivePlayersRonda();   
-            frontGame.FrontRonda.TerminarRonda(Participants);
-            manager.EndRonda();
-        }
-        var winner = manager.GetWinner();
-        frontGame.EndGame(winner);
-        manager.EndGame(winner);
+        Game Game = new Game(manager, frontGame);
+        Game.ExecuteGame();
     }
     
 }

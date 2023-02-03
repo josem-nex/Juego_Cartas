@@ -2,11 +2,11 @@ namespace Poker;
 
 public interface IFrontMiniRonda
 {
-    void EmpezarJugada(Player player);
-    void Decide(bool flag);
+    void EmpezarMiniRonda(IEnumerable<Player> players);
+    void Decide(bool flag, Player player);
     void DecisionInvalida();
-    void DecisionInvalida(IDecision decision);
-    void TomarDecision(IDecision decision);
+    void DecisionInvalida(string Help);
+    void TomarDecision(string decision);
     void TerminarMiniRonda();
     void EntrePlayer();
     

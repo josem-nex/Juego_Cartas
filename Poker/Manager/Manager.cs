@@ -16,23 +16,40 @@ public class Manager
         FrontGame = frontGame;
     }
     private Scorer Scorer { get; }
-    public IFrontendGame FrontGame { get;}
+    public IFrontendGame FrontGame { get; }
     public IGlobal_Contexto Global_Contexto { get; }
     internal Ronda ronda { get; private set; }
-    public void StartRonda(){
+    internal MiniRonda Mini_Ronda { get; private set; }
+    public void StartRonda()
+    {
         Global_Contexto.Config();
         ronda = new Ronda(Scorer, Global_Contexto, FrontGame);
     }
-    public void ExecuteRonda() => ronda.Simulate();
-    public void EndRonda(){
+    public void ExecuteRonda() => ronda.StartRonda();
+    public void EndRonda()
+    {
         ronda.EndRonda();
         Global_Contexto.PlayerManager.Set_Active_Players(ronda.ParticipantsEndRonda());
     }
+    public void ExecuteMiniRondas(Mini_Ronda_Contexto contexto_config)
+    {
+        Mini_Ronda = ronda.CreateMiniRonda(contexto_config);
+        Mini_Ronda.Execute();
+    }
+    public void Execute_Winners(IEnumerable<Player> round_finalist)
+    {
+        var winners = ronda.GetWinners(round_finalist);
+        ronda.Execute_Winners(winners);
+    }
+    public (string, string) InfoDecision(Player player, string decision) => Mini_Ronda.InfoDecision(decision, player);
+    public bool MakeDecision(Player player, string decision) => Mini_Ronda.MakeDecision(decision, player);
     public IEnumerable<Player> GetWinnersRonda() => ronda.Winners;
-    public Player GetWinner() =>  Global_Contexto.PlayerManager.Get_Player_By_Pos(0);
+    public Player GetWinner() => Global_Contexto.PlayerManager.Get_Player_By_Pos(0);
     public IEnumerable<Player> GetActivePlayers() => Global_Contexto.PlayerManager.Get_Active_Players(1);
     public IEnumerable<Player> GetActivePlayersRonda() => Global_Contexto.PlayerManager.Get_Active_Players(2);
-    public void EndGame(Player winner){
+    public IEnumerable<Player> GetActivePlayersMiniRonda() => Global_Contexto.PlayerManager.Get_Active_Players(3);
+    public void EndGame(Player winner)
+    {
         foreach (var player in Global_Contexto.PlayerManager.Players.Where(x => x.Id != winner.Id))
         {
             if (player.Colector.get_efectos.Count > 0)
