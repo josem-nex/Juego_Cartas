@@ -18,23 +18,16 @@ public class Manager
     private Scorer Scorer { get; }
     public IFrontendGame FrontGame { get;}
     public IGlobal_Contexto Global_Contexto { get; }
-    internal IEnumerable<Player> Players
-    {
-        get
-        {
-            return Global_Contexto.PlayerManager.Players;
-        }
+    public void StartRonda(){
+        Global_Contexto.Config();
+        Ronda ronda = new Ronda(Scorer, Global_Contexto, FrontGame);
+        Global_Contexto.PlayerManager.Set_Active_Players(ronda.Simulate());
     }
-    public void SimulateGame()
-    {
-        FrontGame.StarGame();
-        while (Global_Contexto.PlayerManager.Get_Active_Players(1).Count() > 1)
-        {
-            Global_Contexto.Config();
-            Ronda ronda = new Ronda(Scorer, Global_Contexto, FrontGame);
-            Global_Contexto.PlayerManager.Set_Active_Players(ronda.Simulate());
-        }
-        var winner = Global_Contexto.PlayerManager.Get_Player_By_Pos(0);
+    public Player GetWinner() =>  Global_Contexto.PlayerManager.Get_Player_By_Pos(0);
+    public IEnumerable<Player> GetActivePlayers() => Global_Contexto.PlayerManager.Get_Active_Players(1);
+    public IEnumerable<Player> GetActivePlayersRonda() => Global_Contexto.PlayerManager.Get_Active_Players(2);
+    
+    public void EndGame(Player winner){
         foreach (var player in Global_Contexto.PlayerManager.Players.Where(x => x.Id != winner.Id))
         {
             if (player.Colector.get_efectos.Count > 0)
@@ -43,6 +36,5 @@ public class Manager
             }
         }
         Global_Contexto.PlayerManager.Filtro_Partida = new List<PlayerManager.Filtrar>();
-        FrontGame.EndGame(winner);
     }
 }

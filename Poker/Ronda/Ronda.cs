@@ -28,7 +28,6 @@ internal class Ronda
         Global_Contexto.PlayerManager.Filtro_Ronda = new List<PlayerManager.Filtrar>();
         foreach (var player in Participants)
             player.Hand = new Hand(this.Scorer);
-        FrontGame.FrontRonda.EmpezarRonda(Participants);
     }
     IEnumerable<Player> ExecuteMiniRondas(List<Mini_Ronda_Contexto> contextos)
     {
