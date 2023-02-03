@@ -9,6 +9,17 @@ public class Game
         Manager = manager;
         FrontGame = frontGame;
     }
+    public void ExecuteGame()
+    {
+        FrontGame.StarGame();
+        while (Manager.GetActivePlayers().Count() > 1)
+        {
+            ExecuteRonda();
+        }
+        var winner = Manager.GetWinner();
+        FrontGame.EndGame(winner);
+        Manager.EndGame(winner);
+    }
     public void ExecuteRonda()
     {
         FrontGame.FrontRonda.EmpezarRonda(Manager.GetActivePlayersRonda());
@@ -20,17 +31,6 @@ public class Game
         var Participants = Manager.GetActivePlayersRonda();
         FrontGame.FrontRonda.TerminarRonda(Participants);
         Manager.EndRonda();
-    }
-    public void ExecuteGame()
-    {
-        FrontGame.StarGame();
-        while (Manager.GetActivePlayers().Count() > 1)
-        {
-            ExecuteRonda();
-        }
-        var winner = Manager.GetWinner();
-        FrontGame.EndGame(winner);
-        Manager.EndGame(winner);
     }
     public void ExecuteMiniRondas()
     {

@@ -58,7 +58,9 @@ public class Program
         Manager manager = new Manager(scorer, context, frontGame);
         
         Game Game = new Game(manager, frontGame);
-        Game.ExecuteGame();
+        Simulador simulador = new Simulador(manager);
+        simulador.Simular();
+
     }
     
 }
